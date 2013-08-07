@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength
+END
+EmoticonLookupTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/EmoticonLookupTable.txt
+END
+EmotionLookupTableGeneral.txt
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/EmotionLookupTableGeneral.txt
+END
+QuestionWords.txt
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/QuestionWords.txt
+END
+SlangLookupTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/SlangLookupTable.txt
+END
+NegatingWordList.txt
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/NegatingWordList.txt
+END
+BoosterWordList.txt
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/BoosterWordList.txt
+END
+EnglishWordList.txt
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/EnglishWordList.txt
+END
+IdiomLookupTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/IdiomLookupTable.txt
+END
+EmotionLookupTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/observatorio_web/!svn/ver/1346/TimeSeriesBuilder/extra/SentiStrength/EmotionLookupTable.txt
+END
