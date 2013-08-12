@@ -17,7 +17,7 @@ import java.util.List;
 public abstract class CollectionHandler {
     protected String inputFolder;    // path of the collection
     protected String evalTweetsFolder;  // Folder where evaluated Tweets will be stored
-    protected String timeSeriesFolder; // Folder where the final time series will be stored
+    protected String outputFolder; // Folder where the final time series will be stored
     
     protected List<EntryController> entryControllers;  // A list of controlles for each entry within the collection
     
@@ -25,7 +25,7 @@ public abstract class CollectionHandler {
     public CollectionHandler(String inputFolder,String evalTweetsFolder, String timeSeriesFolder){
         this.inputFolder=inputFolder;
         this.evalTweetsFolder=evalTweetsFolder;
-        this.timeSeriesFolder=timeSeriesFolder;
+        this.outputFolder=timeSeriesFolder;
         this.entryControllers=new ArrayList<EntryController>();       
 
     }
