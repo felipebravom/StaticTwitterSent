@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package featuree_extractor;
+package feature_extractor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,22 +15,18 @@ import java.util.List;
  * 
  */
 public abstract class CollectionHandler {
-    protected String inputFolder;    // path of the collection
-    protected String evalTweetsFolder;  // Folder where evaluated Tweets will be stored
-    protected String outputFolder; // Folder where the final time series will be stored
-    
+    protected String inputFile;    // file with the collection of tweets
+    protected String evalTweetsFolder;  // Folder where evaluated Tweets will be stored    
     protected List<EntryController> entryControllers;  // A list of controlles for each entry within the collection
     
     
-    public CollectionHandler(String inputFolder,String evalTweetsFolder, String timeSeriesFolder){
-        this.inputFolder=inputFolder;
+    public CollectionHandler(String inputFolder,String evalTweetsFolder){
+        this.inputFile=inputFolder;
         this.evalTweetsFolder=evalTweetsFolder;
-        this.outputFolder=timeSeriesFolder;
-        this.entryControllers=new ArrayList<EntryController>();       
+        this.entryControllers=new ArrayList<EntryController>();   // A list of EntryControllers    
 
     }
     
-
 
     // process the dataset
    public abstract void process();  

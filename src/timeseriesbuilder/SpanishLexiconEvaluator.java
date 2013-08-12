@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import feature_extractor.LexiconEvaluator;
 import weka.core.stemmers.SnowballStemmer;
 
 /*

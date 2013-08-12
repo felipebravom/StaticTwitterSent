@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package featuree_extractor;
+package feature_extractor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import timeseriesbuilder.LexiconEvaluator;
 import uk.ac.wlv.sentistrength.SentiStrength;
 
 /**
@@ -31,7 +30,7 @@ public class EntryController {
     // crea una entrada segun el formato del dato
     public void createEntry() {
         try {
-            Class c = Class.forName("timeseriesbuilder." + format + "EntryFactory");
+            Class c = Class.forName("feature_extractor." + format + "EntryFactory");
             Constructor EntryFactoryConstructor = c.getConstructor(String.class); // Creamos la instancia
             EntryFactory ef = (EntryFactory) EntryFactoryConstructor.newInstance(this.data); // Creamos la instancia
 

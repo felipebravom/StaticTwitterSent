@@ -3,7 +3,7 @@
  * and open the template in the editor.
  * Esqueleto de mi fabracia de entradas
  */
-package featuree_extractor;
+package feature_extractor;
 
 
 /**

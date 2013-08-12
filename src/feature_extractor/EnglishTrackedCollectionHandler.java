@@ -1,4 +1,4 @@
-package timeseriesbuilder;
+package feature_extractor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,12 +12,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import featuree_extractor.CollectionHandler;
-import featuree_extractor.Entry;
-import featuree_extractor.EntryController;
-import featuree_extractor.EntrySet;
-import featuree_extractor.EntrySetController;
-import featuree_extractor.SWN3;
 import uk.ac.wlv.sentistrength.SentiStrength;
 
 /*
@@ -30,8 +24,8 @@ import uk.ac.wlv.sentistrength.SentiStrength;
  */
 public class EnglishTrackedCollectionHandler extends CollectionHandler {
 
-    public EnglishTrackedCollectionHandler(String inputFolder, String evalTweetsFolder, String timeSeriesFolder) {
-        super(inputFolder, evalTweetsFolder, timeSeriesFolder);
+    public EnglishTrackedCollectionHandler(String inputFolder, String evalTweetsFolder) {
+        super(inputFolder, evalTweetsFolder);
     }
 
     @Override
@@ -48,14 +42,14 @@ public class EnglishTrackedCollectionHandler extends CollectionHandler {
 
 
         SentiStrength sentiStrength = new SentiStrength();
-        String sentiParams[] = {"sentidata", "extra/SentiStrength/"};
+        String sentiParams[] = {"sentidata", "extra/SentiStrength/", "trinary"};
         sentiStrength.initialise(sentiParams);
 
 
         String tmpDate = "";
 
 
-        File inpFolder = new File(this.inputFolder);
+        File inpFolder = new File(this.inputFile);
 
         SimpleDateFormat evalTweetFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat tweetFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -132,14 +126,14 @@ public class EnglishTrackedCollectionHandler extends CollectionHandler {
                             ec.createEntry();  // create the Entry
         
                             // Add the date of the file
-                            ec.getEntry().setDate(tweetDateString);
+//                            ec.getEntry().setDate(tweetDateString);
                             
                             // Only process Valid entries
                             if (ec.getEntry().isValid()) {
 
                                 ec.processWords();
                                 Entry entry = ec.getEntry();
-                                String date = entry.getDate();
+//                                String date = entry.getDate();
 
                                 String topic = inpFolder.getName();
                                 entry.getMetaData().put("topic", topic);
@@ -153,15 +147,15 @@ public class EnglishTrackedCollectionHandler extends CollectionHandler {
 
                                 // Create the first EntrySet
                                 if (i == 0) {
-                                    tmpDate = date;
-                                    entrySet.setDate(date);
+//                                    tmpDate = date;
+//                                    entrySet.setDate(date);
                                     entrySet.setTopic(topic);
                                     entrySet.getEntries().add(entry);
 
                                 } // If we the entry belongs to the same Date we just add it to the EntrySet
-                                else if (tmpDate.equals(date)) {
-                                    entrySet.getEntries().add(entry);
-                                } // Otherwise we process the EntrySet and create a new one with the new Entry
+//                                else if (tmpDate.equals(date)) {
+//                                    entrySet.getEntries().add(entry);
+//                                } // Otherwise we process the EntrySet and create a new one with the new Entry
                                 else {
                                     EntrySetController entrySetController = new EntrySetController(entrySet);
 
@@ -173,8 +167,8 @@ public class EnglishTrackedCollectionHandler extends CollectionHandler {
 
                                     // We start with a new empty EntrySet 
                                     entrySet = new EntrySet();
-                                    tmpDate = date;
-                                    entrySet.setDate(date);
+//                                    tmpDate = date;
+//                                    entrySet.setDate(date);
                                     entrySet.setTopic(topic);
                                     entrySet.getEntries().add(entry);
 

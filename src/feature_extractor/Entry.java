@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package featuree_extractor;
+package feature_extractor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,6 @@ import java.util.Map;
 public class Entry {
 
     private String content; // main content of the entry
-    private String date; 
     private boolean valid; // to check weather the Entry was parsed correctly
     
     public Map<String, Object> features; // features and their values
@@ -52,13 +51,6 @@ public class Entry {
         this.metaData = metaData;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String timeStamp) {
-        this.date = timeStamp;
-    }
 
     public boolean isValid() {
         return valid;
@@ -75,10 +67,14 @@ public class Entry {
 
     @Override
     public String toString() {
-        String value = content+" "+date;
+        String value = content;
         for (String metaDat : this.getMetaData().keySet()) {
             String datValue = this.getMetaData().get(metaDat).toString();
             value += "\n" + metaDat + ":" + datValue;
+        }
+        for (String feat : this.getFeatures().keySet()) {
+            String datValue = this.getFeatures().get(feat).toString();
+            value += "\n" + feat + ":" + datValue;
         }
 
 
