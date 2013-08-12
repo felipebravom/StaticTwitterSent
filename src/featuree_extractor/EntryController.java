@@ -2,12 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package timeseriesbuilder;
+package featuree_extractor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import timeseriesbuilder.LexiconEvaluator;
 import uk.ac.wlv.sentistrength.SentiStrength;
 
 /**

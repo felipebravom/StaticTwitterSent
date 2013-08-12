@@ -4,6 +4,8 @@
  */
 package timeseriesbuilder;
 
+import featuree_extractor.CollectionHandler;
+
 /**
  *
  * @author fbravo

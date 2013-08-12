@@ -11,6 +11,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import featuree_extractor.CollectionHandler;
+import featuree_extractor.Entry;
+import featuree_extractor.EntryController;
+import featuree_extractor.EntrySet;
+import featuree_extractor.EntrySetController;
+import featuree_extractor.SWN3;
 import uk.ac.wlv.sentistrength.SentiStrength;
 
 /*

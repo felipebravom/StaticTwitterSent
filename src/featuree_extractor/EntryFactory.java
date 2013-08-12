@@ -3,7 +3,8 @@
  * and open the template in the editor.
  * Esqueleto de mi fabracia de entradas
  */
-package timeseriesbuilder;
+package featuree_extractor;
+
 
 /**
  *

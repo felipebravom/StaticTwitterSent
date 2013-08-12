@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package timeseriesbuilder;
+package featuree_extractor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,9 @@ import java.util.List;
 /**
  *
  * @author felipe
- * Handles a temporal collection of Tweets and export 
- * opinion time series from it
+ * Handles a  collection of Tweets and export a dataset with the corresponding 
+ * features 
+ * 
  */
 public abstract class CollectionHandler {
     protected String inputFolder;    // path of the collection

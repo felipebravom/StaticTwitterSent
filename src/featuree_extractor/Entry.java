@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package timeseriesbuilder;
+package featuree_extractor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class Entry {
     private boolean valid; // to check weather the Entry was parsed correctly
     
     public Map<String, Object> features; // features and their values
-    public Map<String, Object> metaData; // possible metadata like 
+    public Map<String, Object> metaData; // possible metadata 
     
 
     public Entry() {
