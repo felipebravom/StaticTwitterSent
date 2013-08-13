@@ -170,10 +170,11 @@ public class EntryController {
 
         int pos = Integer.parseInt(values[0]);
         int neg = Integer.parseInt(values[1]);
+        int neu = Integer.parseInt(values[2]);
 
         entry.getMetaData().put("sentiStrength_pos", pos);
         entry.getMetaData().put("sentiStrength_neg", neg);
-
+        entry.getMetaData().put("sentiStrength_neu", neu);
 
     }
 
