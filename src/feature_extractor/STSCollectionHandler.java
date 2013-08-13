@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import uk.ac.wlv.sentistrength.SentiStrength;
 
@@ -39,6 +41,9 @@ public class STSCollectionHandler extends CollectionHandler {
 			
 			String line;
             try {
+            	// Create an EntrySet to be used to submitt the tweets to the Sentiment140 API
+            	List<Entry> entSet=new ArrayList<Entry>();
+            	
 				while ((line = bf.readLine()) != null) {
 
 				    EntryController ec = new EntryController(line); // create the EntryController
@@ -58,9 +63,26 @@ public class STSCollectionHandler extends CollectionHandler {
 				        ec.evaluateSWN3(swn3);
 				        ec.evaluateSentiStrength(sentiStrength);
 				        
-				        System.out.println(ec.getEntry().toString());
+				        // Add the entry to the EntrySet
+				        entSet.add(entry);
+				        
+				        
 				        
 				    }
+				    
+				    Sent140Evaluator s140=new Sent140Evaluator(entSet);
+				    s140.evaluateSentimentApiEntrySet();
+				    
+				    for(Entry ent:entSet){
+				    	System.out.println(ent.toString());
+					    	
+				    }
+				    
+				    
+				    
+				    
+				    
+				    
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -76,7 +98,7 @@ public class STSCollectionHandler extends CollectionHandler {
 	}
 	
 	static public void main(String args[]){
-		CollectionHandler ch=new STSCollectionHandler("datasets/STS.csv","lla");
+		CollectionHandler ch=new STSCollectionHandler("datasets/test.csv","lla");
 		ch.process();
 		
 	}
