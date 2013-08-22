@@ -137,7 +137,7 @@ public class EnglishTrackedCollectionHandler extends CollectionHandler {
 
                                 String topic = inpFolder.getName();
                                 entry.getMetaData().put("topic", topic);
-                                ec.evaluatePolarityLexicon(polarLex); // evaluate Lexicon Polarity
+                                ec.evaluateOpfinderLexicon(polarLex); // evaluate Lexicon Polarity
 
                                 ec.evaluateAFINNLexicon(afinnLex);
                                 ec.evaluateSWN3(swn3);

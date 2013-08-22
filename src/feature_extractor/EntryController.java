@@ -6,6 +6,7 @@ package feature_extractor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,7 +59,7 @@ public class EntryController {
         this.words = StaticOperations.wordTokenizer(this.clean_message);
     }
 
-    public void evaluatePolarityLexicon(LexiconEvaluator le) {
+    public void evaluateOpfinderLexicon(LexiconEvaluator le) {
 
 
         int negativeness = 0;
@@ -75,8 +76,8 @@ public class EntryController {
         }
 
 
-        entry.getMetaData().put("lex_positive_words", positiveness);
-        entry.getMetaData().put("lex_negative_words", negativeness);
+        entry.getMetaData().put("opfinder_positive_words", positiveness);
+        entry.getMetaData().put("opfinder_negative_words", negativeness);
 
 
     }
@@ -118,7 +119,7 @@ public class EntryController {
 
     }
 
-    // evalutes the sentiment score using SentiWordnet
+    // evaluates the sentiment score using SentiWordnet
     public void evaluateSWN3(SWN3 swn3) {
         int swn3_positive_words = 0;
         int swn3_neutral_words = 0;
@@ -153,6 +154,54 @@ public class EntryController {
 
 
     }
+    
+    // Calculate emotion-oriented features using NRC
+    public void evaluateNRC(NRCEvaluator nrc){
+    	
+        int anger = 0;
+        int anticipation = 0;
+        int disgust = 0;
+        int fear = 0;
+        int joy = 0;
+        int negative = 0;
+        int positive = 0;
+        int sadness = 0;
+        int surprise = 0;
+        int trust = 0;
+        
+        for (String word : this.words) {
+        	// I retrieve the EmotionMap if the word match the lexicon
+        	if(nrc.getDict().containsKey(word)){        		
+        		Map<String,Integer> emotions=nrc.getDict().get(word);
+        		anger += emotions.get("anger");
+        		anticipation += emotions.get("anticipation");
+        		disgust += emotions.get("disgust");
+        		fear += emotions.get("fear");
+        		joy += emotions.get("joy");
+        		negative += emotions.get("negative");
+        		positive += emotions.get("positive");
+        		sadness += emotions.get("sadness");
+        		surprise += emotions.get("surprise");
+        		trust += emotions.get("trust");        		
+        	}
+        }
+        
+        entry.getMetaData().put("NCRanger", anger);
+        entry.getMetaData().put("NCRanticipation", anticipation);
+        entry.getMetaData().put("NCRdisgust", disgust);
+        entry.getMetaData().put("NCRfear", fear);
+        entry.getMetaData().put("NCRjoy", joy);
+        entry.getMetaData().put("NCRnegative", negative);
+        entry.getMetaData().put("NCRpositive", positive);
+        entry.getMetaData().put("NCRsadness", sadness);
+        entry.getMetaData().put("NCRsurprise", surprise);
+        entry.getMetaData().put("NCRtrust", trust);        
+        
+    	
+    }
+    
+    
+    
 
     public void evaluateSentiStrength(SentiStrength sentiStrength) {
 

@@ -28,6 +28,9 @@ public class STSCollectionHandler extends CollectionHandler {
         afinnLex.processDict();
 
         SWN3 swn3 = new SWN3("extra/SentiWordNet_3.0.0.txt");
+        
+		NRCEvaluator nrc=new NRCEvaluator("extra/NRC-emotion-lexicon-wordlevel-v0.92.txt");
+		nrc.processDict();
 
 
         SentiStrength sentiStrength = new SentiStrength();
@@ -55,12 +58,14 @@ public class STSCollectionHandler extends CollectionHandler {
 				        Entry entry = ec.getEntry();
 //                    String date = entry.getDate();
 
-				        String topic = inpFolder.getName();
-				        entry.getMetaData().put("topic", topic);
-				        ec.evaluatePolarityLexicon(polarLex); // evaluate Lexicon Polarity
+			
+				        ec.evaluateOpfinderLexicon(polarLex); // evaluate Lexicon Polarity
 
 				        ec.evaluateAFINNLexicon(afinnLex);
 				        ec.evaluateSWN3(swn3);
+				        ec.evaluateNRC(nrc);
+				        
+				        
 				        ec.evaluateSentiStrength(sentiStrength);
 				        
 				        // Add the entry to the EntrySet
