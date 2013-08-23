@@ -1,0 +1,201 @@
+General Corpus - Train set
+==========================
+
+Twees:          7219
+Topics:           10
+Tweet languages:   1
+Users:           154
+User types:        3
+User languages:    1
+Date start:  2011-12-02T00:47:55
+Date end:    2012-04-10T23:40:36
+
+ 
+#tweets Topic
+=========================
+3119    política
+2337    otros
+1677    entretenimiento
+ 942    economía
+ 566    música
+ 252    fútbol
+ 245    cine
+ 217    tecnología
+ 113    deportes
+  99    literatura
+ 
+ 
+#tweets Language
+=========================
+7219    es
+ 
+
+#tweets User
+=========================
+   8    3gerardpique
+  25    aarbeloa17
+  10    abarceloh25
+   5    abasagoiti
+  20    aguerosergiokun
+   9    AHernandoVera
+  92    Albert_Rivera
+ 231    AlejandroSanz
+ 145    AlexdelaIglesia
+  16    alferma1
+  69    alfonsomerlos
+  23    Amartinbeaumont
+  23    anabcrubiales
+ 276    anabelenroy_tve
+  32    anai_martin
+   2    anapastorPP
+  72    anapastor_tve
+   8    andresiniesta8
+  58    antoniosanz
+   2    arantzaquiroga
+  68    arsenioescolar
+   6    BelenEstebanM
+  10    BelenHoyo
+   6    Borja_Fadon
+   2    BoseOfficial
+  16    Bsarasola01
+  85    Buenafuente
+  41    byuste
+   7    Carles5puyol
+  36    carlos__alsina
+  13    carloscuestaEM
+  16    carlosdavidgf
+  61    carlosecue
+ 110    Carlos_Latre
+  50    CarmeChaparro
+   3    CarmendelRiego
+  26    carmenmorodo
+  24    CarmenRiolobos
+  65    cayo_lara
+  86    ccifuentes
+   1    cecirl1982
+  32    Cepeda
+  11    cesc4official
+   2    c_floriano
+   3    conchagcampoy
+  14    Crisgallar
+  10    cucagamarra
+  55    davidbisbal
+ 159    David_Busta
+   2    davidperez
+  17    DavilaGaceta
+   4    DiegoForlan7
+  18    DiegoMazon78
+  37    Edurnity
+   5    ElenaFernandez8
+  18    ElenaValenciano
+  22    emontanes
+  42    Enric_Hernandez
+   1    enrique305
+  10    EsperanzAguirre
+  32    estherpalomera
+  39    EvaORegan
+  23    Federicoquevedo
+  53    FedericoQuevedo
+  69    Fgarea
+   3    fgranadoslerena
+   5    fgurbaneja
+  12    fjavierbosque
+  72    garcia_abadillo
+  82    germanyanke
+  30    GFVara
+ 183    GLlamazares
+  23    gonzalezpons
+  22    GUTY14HAZ
+ 148    iescolar
+  11    Ignacos
+   3    ipespinosa
+  18    isadedios
+  26    JAMonago
+  33    javierarenas_pp
+  64    javiercasqueiro
+ 119    javiersolana
+  74    jesusmarana
+   1    JLo
+  12    jmsoria
+  19    Jocoserio
+  27    Joss682008
+   3    JPColmenarejo
+  11    JRBauza
+  18    Juandecolmenero
+  33    juanes
+   8    JuanMa_Moreno
+  11    JuanMoscosodelP
+  50    JuanraLucas
+  43    julia_otero
+   1    LaediGaga
+  58    lazaroelmundo
+  30    LFRudi
+  40    Lissavetzky_M
+ 164    LosadaPescador
+  73    MACEMUOR
+   1    manuelgomeztv
+  12    marianorajoy
+  55    maria_rey
+ 777    mariviromero
+  57    marodriguezb
+  40    matrujil
+   8    mdcospedal
+ 101    mgilguerrero
+  34    mjguemes
+  21    morenobarber
+  33    mrtfernandez
+  33    nachodoral
+  14    nacho_uriarte
+  45    PabloAIglesias
+   8    pacodelatorrep
+  10    pacomarhuenda
+  41    PalomaCervilla
+   8    patxilopez
+  27    PauladeLasHeras
+ 132    PaulaVazquezTV
+  54    paurubio
+ 231    pedroj_ramirez
+  35    PepeGrinan
+  41    periodistas21
+ 151    PilarGGranja
+  71    rafam_simancas
+  18    ricky_martin
+  87    ristomejide
+   5    ritabarbera2010
+  60    riverakiko
+   2    RobertoJimenezA
+  22    RodolfoIrago
+  72    RodrigoBlazquez
+   1    rrodriguezmaeso
+  45    _Rubalcaba_
+   6    RV1805
+  27    SalomeGa
+  29    sanchezcastejon
+  97    sanchez_sonia
+   6    Santi_ABASCAL
+  53    santiagocervera
+  29    SergioRamos
+  52    SerranoAlfonso
+  97    sevillajordi
+   4    shakira
+  49    sonsolesonega
+   2    Sorayapp
+ 150    SSantiagosegura
+  13    teresafclt
+ 128    Tonicanto1
+  32    VicenteVallesTV
+   2    XabiAlonso
+  25    zoidoalcalde
+
+
+#users Type
+=========================
+  74   periodista
+  52   político
+  32   famoso
+
+
+#users Profile language
+=========================
+ 129   es
+  29   en
