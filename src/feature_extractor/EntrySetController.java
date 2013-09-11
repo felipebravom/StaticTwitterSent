@@ -171,134 +171,13 @@ public class EntrySetController {
 
     }
 
-    // computes Aggregated features of the EntrySet according to the features of the Entries
-    public void computeAggregatedFeatures() {
-        int size = this.entrySet.getEntries().size();
-
-
-
-        int supervised_neutral_count = 0;
-        int supervised_positive_count = 0;
-        int supervised_negative_count = 0;
-
-        int lex_positive_count = 0;
-        int lex_negative_count = 0;
-
-        int afinn_positive_count = 0;
-        int afinn_negative_count = 0;
-
-        int afinn_positiveness_sum = 0;
-        int afinn_negativeness_sum = 0;
-
-        int swn3_positive_count = 0;
-        int swn3_neutral_count = 0;
-        int swn3_negative_count = 0;
-
-        double swn3_positiveness = 0.0d;
-        double swn3_negativeness = 0.0d;
-
-        int sentiStrength_positiveness = 0;
-        int sentiStrength_negativeness = 0;
-
-
-        for (Entry entry : this.entrySet.getEntries()) {
-            String supervised_polarity = entry.getMetaData().get("supervised_polarity").toString();
-            if (supervised_polarity.equals("positive")) {
-                supervised_positive_count++;
-            } else if (supervised_polarity.equals("neutral")) {
-                supervised_neutral_count++;
-            } else {
-                supervised_negative_count++;
-            }
-
-            lex_positive_count += (Integer) entry.getMetaData().get("lex_positive_words");
-            lex_negative_count += (Integer) entry.getMetaData().get("lex_negative_words");
-            afinn_positive_count += (Integer) entry.getMetaData().get("afinn_positive_words");
-            afinn_negative_count += (Integer) entry.getMetaData().get("afinn_negative_words");
-            afinn_positiveness_sum += (Integer) entry.getMetaData().get("afinn_positiveness");
-            afinn_negativeness_sum += (Integer) entry.getMetaData().get("afinn_negativeness");
-
-            swn3_positive_count += (Integer) entry.getMetaData().get("swn3_positive_words");
-            swn3_neutral_count += (Integer) entry.getMetaData().get("swn3_neutral_words");
-            swn3_negative_count += (Integer) entry.getMetaData().get("swn3_negative_words");
-
-            swn3_positiveness += (Double) entry.getMetaData().get("swn3_positiveness");
-            swn3_negativeness += (Double) entry.getMetaData().get("swn3_negativeness");
-
-            sentiStrength_positiveness += (Integer) entry.getMetaData().get("sentiStrength_pos");
-            sentiStrength_negativeness += (Integer) entry.getMetaData().get("sentiStrength_neg");
-
-
-
-        }
-
-
-
-        this.entrySet.getAggFeatures().put("tweets_count", size);
-        this.entrySet.getAggFeatures().put("supervised_positive_count", supervised_positive_count);
-        this.entrySet.getAggFeatures().put("supervised_neutral_count", supervised_neutral_count);
-        this.entrySet.getAggFeatures().put("supervised_negative_count", supervised_negative_count);
-        this.entrySet.getAggFeatures().put("lex_positive_count", lex_positive_count);
-        this.entrySet.getAggFeatures().put("lex_negative_count", lex_negative_count);
-        this.entrySet.getAggFeatures().put("afinn_positive_count", afinn_positive_count);
-        this.entrySet.getAggFeatures().put("afinn_negative_count", afinn_negative_count);
-        this.entrySet.getAggFeatures().put("afinn_positiveness_sum", afinn_positiveness_sum);
-        this.entrySet.getAggFeatures().put("afinn_negativeness_sum", afinn_negativeness_sum);
-        this.entrySet.getAggFeatures().put("swn3_positive_count", swn3_positive_count);
-        this.entrySet.getAggFeatures().put("swn3_neutral_count", swn3_neutral_count);
-        this.entrySet.getAggFeatures().put("swn3_negative_count", swn3_negative_count);
-        this.entrySet.getAggFeatures().put("swn3_positiveness", swn3_positiveness);
-        this.entrySet.getAggFeatures().put("swn3_negativeness", swn3_negativeness);
-        this.entrySet.getAggFeatures().put("sentiStrength_positiveness", sentiStrength_positiveness);
-        this.entrySet.getAggFeatures().put("sentiStrength_negativeness", sentiStrength_negativeness);
-
-
-
-
-
-    }
-
-    // Writes the AggregatedFeatures of the EmptySet into a File
-    public void writeAggregatedFeatures(String folderPath) {
-        PrintWriter out = null;
-        try {
-            String fileName = this.entrySet.getTopic() + ":" + this.entrySet.getDate();
-            out = new PrintWriter(new FileWriter(folderPath + "/" + fileName, true));
-
-            String[] metaData = this.entrySet.getAggFeatures().keySet().toArray(new String[0]);
-
-            String firstLine = "topic\tdate\t";
-            String secondLine = this.entrySet.getTopic() + "\t" + this.entrySet.getDate() + "\t";
-            for (int i = 0; i < metaData.length; i++) {
-                firstLine += metaData[i];
-                secondLine += this.entrySet.getAggFeatures().get(metaData[i]);
-                if (i < metaData.length - 1) {
-                    firstLine += "\t";
-                    secondLine += "\t";
-                }
-            }
-
-            out.println(firstLine);
-            out.println(secondLine);
-
-
-
-        } catch (IOException ex) {
-            Logger.getLogger(EntrySetController.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            out.close();
-        }
-
-
-
-    }
 
     // Writes the tweets with their respective Sentiment Values
-    public void writeProcessedEntries(String folderPath) {
+    public void writeProcessedEntries(String fileName) {
         PrintWriter out = null;
         try {
-            String fileName = this.entrySet.getTopic() + ":" + this.entrySet.getDate();
-            out = new PrintWriter(new FileWriter(folderPath + "/" + fileName, true));
+          
+            out = new PrintWriter(new FileWriter(fileName, true));
             // check the presence of any Entry
             if (!this.entrySet.getEntries().isEmpty()) {
                 // retrieves the metadata of the Entries
