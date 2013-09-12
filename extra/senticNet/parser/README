@@ -1,0 +1,34 @@
+README
+=======
+
+1. Run the downloadTagger.py to download the Stanford Tagger to the current folder. 
+
+2. To run the code, python SearchConcepts.py and enter the sentence. 
+
+
+Dependencies:
+=============
+
+1. NLTK        sudo easy_install nltk
+2. enchant     sudo easy_install pyenchant
+3. networkx    sudo easy_install networkx
+
+Make sure your JAVA Environment variable is set correctly. 
+
+
+About
+=======
+
+The parser uses SenticNet (http://sentic.net) as its current knowledge base.
+
+Please acknowledge the authors by citing the following publication
+in any research work or presentation containing results obtained
+in whole or in part through the use of the Sentic Parser:
+D. Rajagopal, E. Cambria, D. Olsher, and K. Kwok. A graph-based approach to commonsense concept extraction and semantic similarity detection. In: WWW, pp. 565-570, Rio De Janeiro (2013)
+
+
+CreateGraph.py:
+================
+
+Create your graph that uses your own knowledge base.
+

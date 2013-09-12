@@ -11,11 +11,13 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
@@ -80,6 +82,57 @@ public class StaticOperations {
         text = match.replaceAll("");  // Removal of special characters
         return text.replaceAll("\n", " ");
     }
+    
+    
+    public static void writeEntries(List<Entry> entries, String fileName) {
+        PrintWriter out = null;
+        try {
+          
+            out = new PrintWriter(new FileWriter(fileName, true));
+            // check the presence of any Entry
+            if (!entries.isEmpty()) {
+                // retrieves the features of the Entries
+                String[] features = entries.get(0).getFeatures().keySet().toArray(new String[1]);
+
+                // Writes the header of the file with the features
+                String firstLine = "content\t";
+
+                for (int i = 0; i < features.length; i++) {
+                    firstLine += features[i];
+                    if (i < features.length - 1) {
+                        firstLine += "\t";
+                    }
+                }
+                out.println(firstLine);
+
+                // traverses all entries 
+                for (Entry entry : entries) {
+
+                    String line = entry.getContent().replaceAll("\t", " ") + "\t";
+                    for (int i = 0; i < features.length; i++) {
+                        line += entry.getFeatures().get(features[i]);
+                        if (i < features.length - 1) {
+                            line += "\t";
+                        }
+                    }
+                    out.println(line);
+
+
+                }
+
+
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(EntrySetController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            out.close();
+        }
+    }
+    
+    
+    
+    
+    
 
     // Creates time series by concatenig lines of the aggregated Features
     public static void createTimeSeries(String folderPath, String outFile) {

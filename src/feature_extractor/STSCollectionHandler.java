@@ -22,73 +22,76 @@ public class STSCollectionHandler extends CollectionHandler {
 		// TODO Auto-generated method stub
 
 		// We first process the lexicons
-		LexiconEvaluator polarLex = new LexiconEvaluator("extra/polarity-lexicon.txt");
+		LexiconEvaluator polarLex = new LexiconEvaluator(
+				"extra/polarity-lexicon.txt");
 		polarLex.processDict();
 		LexiconEvaluator afinnLex = new LexiconEvaluator("extra/AFINN-111.txt");
 		afinnLex.processDict();
 
 		SWN3 swn3 = new SWN3("extra/SentiWordNet_3.0.0.txt");
 
-		NRCEvaluator nrc=new NRCEvaluator("extra/NRC-emotion-lexicon-wordlevel-v0.92.txt");
+		NRCEvaluator nrc = new NRCEvaluator(
+				"extra/NRC-emotion-lexicon-wordlevel-v0.92.txt");
 		nrc.processDict();
 
-
 		SentiStrength sentiStrength = new SentiStrength();
-		String sentiParams[] = {"sentidata", "extra/SentiStrength/", "trinary"};
+		String sentiParams[] = { "sentidata", "extra/SentiStrength/", "trinary" };
 		sentiStrength.initialise(sentiParams);
 
 		File inpFolder = new File(this.inputFile);
 
 		try {
-			BufferedReader bf = new BufferedReader(new FileReader(this.inputFile));
+			BufferedReader bf = new BufferedReader(new FileReader(
+					this.inputFile));
 
 			String line;
 			try {
-				// Create an EntrySet to be used to submitt the tweets to the Sentiment140 API
-				List<Entry> entSet=new ArrayList<Entry>();
+				// Create an EntrySet to be used to submitt the tweets to the
+				// Sentiment140 API
+				List<Entry> entSet = new ArrayList<Entry>();
 
 				while ((line = bf.readLine()) != null) {
 
-					EntryController ec = new EntryController(line); // create the EntryController
+					EntryController ec = new EntryController(line); // create
+																	// the
+																	// EntryController
 					ec.setFormat("STS"); // seteo al formato elections
-					ec.createEntry();  // create the Entry
+					ec.createEntry(); // create the Entry
 					if (ec.getEntry().isValid()) {
 
 						ec.processWords();
 						Entry entry = ec.getEntry();
-						//                    String date = entry.getDate();
+						// String date = entry.getDate();
 
-
-						ec.evaluateOpfinderLexicon(polarLex); // evaluate Lexicon Polarity
+						ec.evaluateOpfinderLexicon(polarLex); // evaluate
+																// Lexicon
+																// Polarity
 
 						ec.evaluateAFINNLexicon(afinnLex);
 						ec.evaluateSWN3(swn3);
 						ec.evaluateNRC(nrc);
-
 
 						ec.evaluateSentiStrength(sentiStrength);
 
 						// Add the entry to the EntrySet
 						entSet.add(entry);
 
-
-
 					}
-
-					Sent140Evaluator s140=new Sent140Evaluator(entSet);
-					s140.evaluateSentimentApiEntrySet();
-
-					for(Entry ent:entSet){
-						System.out.println(ent.toString());
-
-					}
-
-
-
-
-
 
 				}
+
+				Sent140Evaluator s140 = new Sent140Evaluator(entSet);
+				s140.evaluateSentimentApiEntrySet();
+
+				for (Entry ent : entSet) {
+					System.out.println(ent.toString());
+				}
+				
+				
+				StaticOperations.writeEntries(entSet, this.evalTweetsFolder);
+				
+				
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -99,11 +102,11 @@ public class STSCollectionHandler extends CollectionHandler {
 			e.printStackTrace();
 		}
 
-
 	}
 
-	static public void main(String args[]){
-		CollectionHandler ch=new STSCollectionHandler("datasets/test.csv","lla");
+	static public void main(String args[]) {
+		CollectionHandler ch = new STSCollectionHandler("datasets/test.csv",
+				"salida.csv");
 		ch.process();
 
 	}

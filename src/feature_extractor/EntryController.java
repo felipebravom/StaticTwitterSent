@@ -53,14 +53,17 @@ public class EntryController {
 		}
 	}
 
+	
+	// Clean the message and tokenize words
 	public void processWords() {
 
 		this.clean_message = StaticOperations.clean(this.entry.getContent());
 		this.words = StaticOperations.wordTokenizer(this.clean_message);
 	}
 
+	// Calculate OpinionFinder Features
+	
 	public void evaluateOpfinderLexicon(LexiconEvaluator le) {
-
 
 		int negativeness = 0;
 		int positiveness = 0;
@@ -76,8 +79,8 @@ public class EntryController {
 		}
 
 
-		entry.getMetaData().put("opfinder_positive_words", positiveness);
-		entry.getMetaData().put("opfinder_negative_words", negativeness);
+		entry.getFeatures().put("OPW", positiveness);
+		entry.getFeatures().put("ONW", negativeness);
 
 
 	}
@@ -110,11 +113,11 @@ public class EntryController {
 		}
 
 
-		entry.getMetaData().put("afinn_positive_words", pos_words);
-		entry.getMetaData().put("afinn_negative_words", neg_words);
+		//entry.getFeatures().put("afinn_positive_words", pos_words);
+		// entry.getFeatures().put("afinn_negative_words", neg_words);
 
-		entry.getMetaData().put("afinn_positiveness", positiveness);
-		entry.getMetaData().put("afinn_negativeness", negativeness);
+		entry.getFeatures().put("APO", positiveness);
+		entry.getFeatures().put("ANE", negativeness);
 
 
 	}
@@ -144,11 +147,15 @@ public class EntryController {
 
 			}
 		}
-		entry.getMetaData().put("swn3_positive_words", swn3_positive_words);
-		entry.getMetaData().put("swn3_neutral_words", swn3_neutral_words);
-		entry.getMetaData().put("swn3_negative_words", swn3_negative_words);
-		entry.getMetaData().put("swn3_positiveness", swn3_positiveness);
-		entry.getMetaData().put("swn3_negativeness", swn3_negativeness);
+		
+		
+//		entry.getFeatures().put("swn3_positive_words", swn3_positive_words);
+//		entry.getFeatures().put("swn3_neutral_words", swn3_neutral_words);
+//		entry.getFeatures().put("swn3_negative_words", swn3_negative_words);
+//		
+		
+		entry.getFeatures().put("SWP", swn3_positiveness);
+		entry.getFeatures().put("SWN", swn3_negativeness);
 
 
 
@@ -186,16 +193,16 @@ public class EntryController {
 			}
 		}
 
-		entry.getMetaData().put("NCRanger", anger);
-		entry.getMetaData().put("NCRanticipation", anticipation);
-		entry.getMetaData().put("NCRdisgust", disgust);
-		entry.getMetaData().put("NCRfear", fear);
-		entry.getMetaData().put("NCRjoy", joy);
-		entry.getMetaData().put("NCRnegative", negative);
-		entry.getMetaData().put("NCRpositive", positive);
-		entry.getMetaData().put("NCRsadness", sadness);
-		entry.getMetaData().put("NCRsurprise", surprise);
-		entry.getMetaData().put("NCRtrust", trust);        
+		entry.getFeatures().put("NCRanger", anger);
+		entry.getFeatures().put("NCRanticipation", anticipation);
+		entry.getFeatures().put("NCRdisgust", disgust);
+		entry.getFeatures().put("NCRfear", fear);
+		entry.getFeatures().put("NCRjoy", joy);
+		entry.getFeatures().put("NCRnegative", negative);
+		entry.getFeatures().put("NCRpositive", positive);
+		entry.getFeatures().put("NCRsadness", sadness);
+		entry.getFeatures().put("NCRsurprise", surprise);
+		entry.getFeatures().put("NCRtrust", trust);        
 
 
 	}
@@ -221,9 +228,9 @@ public class EntryController {
 		int neg = Integer.parseInt(values[1]);
 		int neu = Integer.parseInt(values[2]);
 
-		entry.getMetaData().put("sentiStrength_pos", pos);
-		entry.getMetaData().put("sentiStrength_neg", neg);
-		entry.getMetaData().put("sentiStrength_neu", neu);
+		entry.getFeatures().put("SSP", pos);
+		entry.getFeatures().put("SSN", neg);
+		entry.getFeatures().put("SSPOL", neu);
 
 	}
 
