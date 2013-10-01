@@ -28,11 +28,26 @@ public class STSCollectionHandler extends CollectionHandler {
 		LexiconEvaluator afinnLex = new LexiconEvaluator("extra/AFINN-111.txt");
 		afinnLex.processDict();
 
+		LexiconEvaluator s140Lex = new LexiconEvaluator(
+				"extra/Sentiment140-Lexicon-v0.1/unigrams-pmilexicon.txt");
+		s140Lex.processDict();
+		
+	    LexiconEvaluator nrcHashtag = new LexiconEvaluator(
+	    		"extra/NRC-Hashtag-Sentiment-Lexicon-v0.1/unigrams-pmilexicon.txt");
+	    nrcHashtag.processDict();
+	        
+	    LexiconEvaluator liuLex = new LexiconEvaluator("extra/BingLiu.csv");
+	    liuLex.processDict();
+		
+		
+		
 		SWN3 swn3 = new SWN3("extra/SentiWordNet_3.0.0.txt");
 
 		NRCEvaluator nrc = new NRCEvaluator(
 				"extra/NRC-emotion-lexicon-wordlevel-v0.92.txt");
 		nrc.processDict();
+		
+		
 
 		SentiStrength sentiStrength = new SentiStrength();
 		String sentiParams[] = { "sentidata", "extra/SentiStrength/", "trinary" };
@@ -66,6 +81,13 @@ public class STSCollectionHandler extends CollectionHandler {
 						ec.evaluateOpfinderLexicon(polarLex); // evaluate
 																// Lexicon
 																// Polarity
+						
+						
+						ec.evaluateBingLiuLexicon(liuLex);
+						
+						ec.evaluateS140Lexicon(s140Lex);
+						
+						ec.evaluateNRCHashtagLexicon(nrcHashtag);
 
 						ec.evaluateAFINNLexicon(afinnLex);
 						ec.evaluateSWN3(swn3);
@@ -83,10 +105,10 @@ public class STSCollectionHandler extends CollectionHandler {
 				Sent140Evaluator s140 = new Sent140Evaluator(entSet);
 				s140.evaluateSentimentApiEntrySet();
 
-				for (Entry ent : entSet) {
-					System.out.println(ent.toString());
-				}
-				
+//				for (Entry ent : entSet) {
+//					System.out.println(ent.toString());
+//				}
+//				
 				
 				StaticOperations.writeEntries(entSet, this.evalTweetsFolder);
 				
@@ -105,8 +127,8 @@ public class STSCollectionHandler extends CollectionHandler {
 	}
 
 	static public void main(String args[]) {
-		CollectionHandler ch = new STSCollectionHandler("datasets/test.csv",
-				"salida.csv");
+		CollectionHandler ch = new STSCollectionHandler("datasets/STS.csv",
+				"STSproc.csv");
 		ch.process();
 
 	}

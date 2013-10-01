@@ -84,6 +84,111 @@ public class EntryController {
 
 
 	}
+	
+	public void evaluateBingLiuLexicon(LexiconEvaluator le) {
+
+		int negativeness = 0;
+		int positiveness = 0;
+
+		for (String w : this.words) {
+
+			String pol = le.retrieveValue(w);
+			if (pol.equals("positive")) {
+				positiveness++;
+			} else if (pol.equals("negative")) {
+				negativeness++;
+			}
+		}
+
+
+		entry.getFeatures().put("BLPW", positiveness);
+		entry.getFeatures().put("BLNW", negativeness);
+
+
+	}
+	
+	public void evaluateS140Lexicon(LexiconEvaluator le) {
+
+		int pos_words = 0;
+		int neg_words = 0;
+
+		// accumulated postiveness and negativeness
+		double ac_neg = 0;
+		double ac_pos = 0;
+
+
+		for (String w : this.words) {
+
+			String pol = le.retrieveValue(w);
+			if (!pol.equals("not_found")) {
+				double value = Double.parseDouble(pol);
+				if (value > 0) {
+					pos_words++;
+					ac_pos += value;
+				} else {
+					neg_words++;
+					ac_neg += value;
+				}
+
+			}
+
+
+		}
+
+
+		//entry.getFeatures().put("afinn_positive_words", pos_words);
+		// entry.getFeatures().put("afinn_negative_words", neg_words);
+
+		entry.getFeatures().put("S140LEXPOS", ac_pos);
+		entry.getFeatures().put("S140LEXNEG", ac_neg);
+
+
+	}
+	
+	
+	public void evaluateNRCHashtagLexicon(LexiconEvaluator le) {
+
+		int pos_words = 0;
+		int neg_words = 0;
+
+		// accumulated postiveness and negativeness
+		double ac_neg = 0;
+		double ac_pos = 0;
+
+
+		for (String w : this.words) {
+
+			String pol = le.retrieveValue(w);
+			if (!pol.equals("not_found")) {
+				
+				System.out.println(w+" "+pol);
+				
+				double value = Double.parseDouble(pol);
+				if (value > 0) {
+					pos_words++;
+					ac_pos += value;
+				} else {
+					neg_words++;
+					ac_neg += value;
+				}
+
+			}
+
+
+		}
+
+
+		//entry.getFeatures().put("afinn_positive_words", pos_words);
+		// entry.getFeatures().put("afinn_negative_words", neg_words);
+
+		entry.getFeatures().put("NRCHASHPOS", ac_pos);
+		entry.getFeatures().put("NRCHASHNEG", ac_neg);
+
+
+	}
+	
+	
+	
 
 	public void evaluateAFINNLexicon(LexiconEvaluator le) {
 
