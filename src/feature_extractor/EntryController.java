@@ -161,8 +161,6 @@ public class EntryController {
 			String pol = le.retrieveValue(w);
 			if (!pol.equals("not_found")) {
 				
-				System.out.println(w+" "+pol);
-				
 				double value = Double.parseDouble(pol);
 				if (value > 0) {
 					pos_words++;

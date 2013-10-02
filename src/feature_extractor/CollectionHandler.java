@@ -18,10 +18,12 @@ public abstract class CollectionHandler {
     protected String inputFile;    // file with the collection of tweets
     protected String evalTweetsFolder;  // Folder where evaluated Tweets will be stored    
     protected List<EntryController> entryControllers;  // A list of controlles for each entry within the collection
+    protected String format; // Format of the Entries
     
     
-    public CollectionHandler(String inputFolder,String evalTweetsFolder){
-        this.inputFile=inputFolder;
+    public CollectionHandler(String format,String inputFolder,String evalTweetsFolder){
+        this.format=format;
+    	this.inputFile=inputFolder;
         this.evalTweetsFolder=evalTweetsFolder;
         this.entryControllers=new ArrayList<EntryController>();   // A list of EntryControllers    
 

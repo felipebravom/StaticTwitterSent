@@ -12,10 +12,11 @@ import uk.ac.wlv.sentistrength.SentiStrength;
 
 public class STSCollectionHandler extends CollectionHandler {
 
-	public STSCollectionHandler(String inputFolder, String evalTweetsFolder) {
-		super(inputFolder, evalTweetsFolder);
-		// TODO Auto-generated constructor stub
+	public STSCollectionHandler(String format, String inputFolder, String evalTweetsFolder) {
+		super(format,inputFolder, evalTweetsFolder);
 	}
+	
+		
 
 	@Override
 	public void process() {
@@ -70,7 +71,7 @@ public class STSCollectionHandler extends CollectionHandler {
 					EntryController ec = new EntryController(line); // create
 																	// the
 																	// EntryController
-					ec.setFormat("STS"); // seteo al formato elections
+					ec.setFormat(this.format); // seteo al formato definido
 					ec.createEntry(); // create the Entry
 					if (ec.getEntry().isValid()) {
 
@@ -127,8 +128,8 @@ public class STSCollectionHandler extends CollectionHandler {
 	}
 
 	static public void main(String args[]) {
-		CollectionHandler ch = new STSCollectionHandler("datasets/STS.csv",
-				"STSproc.csv");
+		CollectionHandler ch = new STSCollectionHandler("HumanCode","datasets/twitter4242.csv",
+				"twitter4242proc.csv");
 		ch.process();
 
 	}
