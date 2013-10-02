@@ -332,10 +332,23 @@ public class EntryController {
 		int pos = Integer.parseInt(values[0]);
 		int neg = Integer.parseInt(values[1]);
 		int neu = Integer.parseInt(values[2]);
+		
+		String sspol;
+		
+		if(neu>0){
+			sspol="positive";
+		}
+		else if(neu==0){
+			sspol="neutral";
+		}
+		else{
+			sspol="negative";
+		}
+		
 
 		entry.getFeatures().put("SSP", pos);
 		entry.getFeatures().put("SSN", neg);
-		entry.getFeatures().put("SSPOL", neu);
+		entry.getFeatures().put("SSPOL", sspol);
 
 	}
 
