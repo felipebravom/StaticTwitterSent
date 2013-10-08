@@ -170,7 +170,7 @@ def process_file(input_file,output_file):
 
 
 if __name__ == '__main__':     
-    process_file("twitter4242proc.csv","twitter4242final2.csv")
+    process_file("sanderspart2.csv","sandersfinalpart2.csv")
     
     #res=process_sentence("I hate but I love you a lot")
     #print res
