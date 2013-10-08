@@ -148,6 +148,8 @@ def process_file(input_file,output_file):
     f.close()
     
     out_file = open(output_file, 'w')
+    # Lines with errors are stored
+    error_lines = open(output_file+"problems", 'w')
     
     # Add the new features
     header=lines[0].rstrip('\n')+"\tSNpos\tSNneg\tSNpleas\tSNatten\tSNsensi\tSNapt\n"
@@ -159,11 +161,18 @@ def process_file(input_file,output_file):
         values=line.rstrip('\n').split("\t")
         print values[0]
         # proceso el tweet
-        res=process_sentence(values[0])
-        print res
-        out_line=str(res.get("positivity"))+"\t"+str(res.get("negativity"))+"\t"+str(res.get("pleasantness"))+"\t"+str(res.get("attention"))+"\t"+str(res.get("sensitivity"))+"\t"+str(res.get("aptitude"))+"\n"
-        out_file.write(line.rstrip('\n')+"\t"+out_line)
-        print out_line
+        try: 
+            res=process_sentence(values[0])
+            print res
+            out_line=str(res.get("positivity"))+"\t"+str(res.get("negativity"))+"\t"+str(res.get("pleasantness"))+"\t"+str(res.get("attention"))+"\t"+str(res.get("sensitivity"))+"\t"+str(res.get("aptitude"))+"\n"
+            out_file.write(line.rstrip('\n')+"\t"+out_line)
+            print out_line
+            
+        except Exception, e:
+            print e
+            error_lines.write(line.rstrip('\n'))
+            continue           
+            
     
     out_file.close()
 
