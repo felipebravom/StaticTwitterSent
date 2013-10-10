@@ -128,8 +128,8 @@ public class STSCollectionHandler extends CollectionHandler {
 	}
 
 	static public void main(String args[]) {
-		CollectionHandler ch = new STSCollectionHandler("HumanCode","datasets/twitter4242.csv",
-				"twitter4242proc.csv");
+		CollectionHandler ch = new STSCollectionHandler("SemEval","datasets/twitter-train-B.txt",
+				"twitter-train-Bproc.csv");
 		ch.process();
 
 	}
