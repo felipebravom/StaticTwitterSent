@@ -70,7 +70,7 @@ public class NRCEvaluator {
 		NRCEvaluator eval=new NRCEvaluator("extra/NRC-emotion-lexicon-wordlevel-v0.92.txt");
 		eval.processDict();
 
-		Map<String,Integer> pal=eval.getWord("lovefgfdg");
+		Map<String,Integer> pal=eval.getWord("love");
 
 		if(pal!=null){
 			for(String emo:pal.keySet()){

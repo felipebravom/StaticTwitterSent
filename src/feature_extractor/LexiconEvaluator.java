@@ -56,6 +56,10 @@ public class LexiconEvaluator {
 
 
     }
+    
+    public Map<String,String> getDict(){
+    	return this.dict;
+    }
 
     static public void main(String args[]) {
 //        LexiconEvaluator l = new LexiconEvaluator("extra/polarity-lexicon.txt");
